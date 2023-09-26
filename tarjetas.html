@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="itcha.png">
+  <title>TABLERO</title>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka One&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Solitreo&display=swap'); 
+  @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap');
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body{
+      /* background: #81C8D9; */
+      background: #BEFFF7;
+      /* background: linear-gradient(#B5F1CC, #E5FDD1, #E3F4F4, #F8F6F4); */
+      /* background: linear-gradient(#BEFFF7, #A6F6FF, #9EDDFF, #6499E9) no-repeat center center ; */
+      object-fit: cover;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+  .encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* font-size: 1.5em; */
+    padding: 2em;
+    /* line-height: 1; */
+    background-color: #1C2435;
+    color: white;
+    text-align: center;
+  }
+
+  .img{
+  /* bottom: auto; */
+  /* left: auto; */
+    filter: invert(1) saturate(0) brightness(3) contrast(3.5) hue-rotate(10deg);
+    mix-blend-mode: screen;
+  }
+
+  .encabezado h1{
+    display: block;
+    font-family: "Spline Sans";
+    color: #FBFF43;
+    margin: 0.2em;
+    /* margin-top: 0.4em; */
+    font-size: 5.3em;
+    /* line-height: 30%; */
+  }
+
+  .encabezado .ins{
+    display: block;
+    color: #FBFF43;
+    font-size: 0.8em;
+    /* line-height: 30%; */
+  }
+
+  .nav {
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    background: #6499E9;
+  }
+
+  .nav .sub {
+    display: inline;
+    /* margin: 100px; */
+    color: black;
+    line-height: 1;
+    font-family: "Amaranth";
+    /* border: red 1px solid; */
+    text-decoration: none;
+    font-size: 1.8em;
+    font-weight: bold;
+  }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      /* background: #088395; */
+      /* height: 100vh; */
+    }
+
+    .card {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      margin: 2.6em;
+      border-radius: 20px;
+      /* box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2); */
+      cursor: pointer;
+      transition: transform 0.5s;
+    }
+
+    .card:hover {
+      transform: scale(1.1);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      border-radius: 20px;
+      /* background-color: white; */
+      backface-visibility: hidden;
+      transition: transform 0.5s;
+      box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-back{
+        /* background-image: url(descarga.png); */
+        background: linear-gradient(to bottom right, #014ba0, #0a5cb8, #1466c3, #2174d4, #3b8eed);
+        object-fit: cover; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-size: cover;
+        /* image-rendering: optimizequality; */
+        /* aspect-ratio: 3/2; */
+        /* filter:  saturate(0) brightness(1) contrast(1.2); */
+        /* mix-blend-mode: screen; */
+        /* filter: blur(1px); */
+        transform: rotateY(180deg);
+    }
+
+    .card-back img{
+      width: 6em; 
+      margin: 1em 0 0 0;
+      filter: invert(1) saturate(0) brightness(1.4) contrast(1.4); 
+      mix-blend-mode: screen; 
+    }
+    
+    .card-back .from {
+      color: white;
+      font-family: "Fira Sans Condensed";
+      padding: 0 0 0.1em 0;
+      font-size: 2.6em;
+    }
+
+    .card-back .q{
+      color: white;
+      margin: 0.2em 0.5em 0 0.5em;
+      text-align: center;
+      font-family: "Solitreo";
+      font-size: 1.5em;
+      /* font-style: italic; */
+    }
+
+    .card-back .date{
+      color: white;
+      /* margin: 4em 0 0 0; */
+      position: absolute;
+      top: 92%;
+      right: 10%;
+      left: 10%;
+      font-family: "Fira Sans Condensed";
+      font-size: 1em;
+    }
+
+    .card-front {
+      display: flex;
+      background: url(prueba.png) content-box;
+      object-fit: cover;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-front .simbol {
+      display: block;
+      font-family: "Fredoka One";
+      font-size: 9em;
+      color: white;
+    }
+
+    .card-front h3 {
+      margin: 0 0.6em 0 0.6em;
+      line-height: 1.26;
+      /* font-weight: 800; */
+      font-family: "Poppins";
+      font-size: 2.3em;
+      /* margin-top: 10px; */
+      color: black;
+    }
+
+
+    .card.active .card-front {
+      transform: rotateY(-180deg);
+    }
+
+    .card.active .card-back {
+      transform: rotateY(0);
+    }
+    
+    /* Colores y contenidos personalizados */
+
+    .card:nth-child(1) .card-front {
+      background-color: lightblue; /* Color de la tarjeta */
+    }
+
+    .card:nth-child(1) span {
+      font-family: "Fredoka One";
+      font-size: 9em;
+      color: white; /* Color del símbolo */
+    }
+
+    .card:nth-child(1) h3 {
+      color: black; /* Color del nombre */
+    }
+
+    .card:nth-child(1) span::after {
+      content: ""; /* Símbolo del jugador */
+    }
+
+    .card:nth-child(1) h3::after {
+      content: ""; /* Nombre del jugador */
+    }
+
+    .card:nth-child(1) .card-back p::after {
+      content: ""; /* Contenido adicional */
+      font-family: "Roboto";
+
+    }
+    
+     /* Repetir el mismo patrón para las demás tarjetas, cambiando los colores y los contenidos según corresponda */
+
+     /* ... */
+
+  </style>
+</head>
+<body>
+  <div class="encabezado">
+    <p><img src="descarga.png" class="img" alt=""></p>
+    <h1 class="oh">Open House 2023 <span class="ins">ITCHA - AGAPE</span> </h1>
+  </div>
+  <div class="nav">
+    <p class="sub">Tablero de ganadores Tic Tac Toe</p>
+    <!-- <a href="#">Categories</a>
+    <a href="#">Offers</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a> -->
+  </div>
+  <div class="container">
+    
+     <!-- Crear una tarjeta por cada jugador ganador -->
+
+    <div class="card" onclick="this.classList.toggle('active')">
+      <div class="card-front">
+        <span>X</span>
+        <h3>Manuel Galeano <br> &#127941;&#127941;</h3>
+      </div>
+      <div class="card-back">
+        <img src="descarga.png" alt="">
+        <p class="from">San Salvador</p>
+        <p class="q">"Zuleima te extraño"</p>
+        <p class="date">26 de septiembre de 2023</p>
+      </div>
+    </div>
+
+     <!-- Repetir el mismo patrón para las demás tarjetas -->
+    <div class="card" onclick="this.classList.toggle('active')">
+      <div class="card-front">
+          <span class="simbol">O</span>
+          <h3>Martin Olmedo <br> &#127941;</h3>
+      </div>
+      <div class="card-back">
+        <img src="descarga.png" alt="">
+          <p class="from">Chalatenango</p>
+          <p class="q">"Si funciona, no lo toque"</p>
+          <!-- <p class="q">"Y si no eres el amor de mi vida, dir&eacute; que me equivoqué de vida y no de amor"</p> -->
+          <p class="date">26 de septiembre de 2023</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+      <div class="card-front">
+          <span class="simbol">X</span>
+          <h3>Luis Serrano <br>&#127941;</h3>
+      </div>
+      <div class="card-back">
+        <img src="descarga.png" alt="">
+          <p class="from">Reubicaci&oacute;n 1</p>
+          <p class="q">"Barajeen bien"</p>
+          <p class="date">26 de septiembre de 2023</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+      <div class="card-front">
+          <span class="simbol">X</span>
+          <h3>Judith Valencia <br>&#127941;</h3>
+      </div>
+      <div class="card-back">
+        <img src="descarga.png" alt="">
+          <p class="from">Guazapa</p>
+          <p class="q">"Era un punto y coma"</p>
+          <p class="date">26 de septiembre de 2023</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+      <div class="card-front">
+          <span class="simbol">O</span>
+          <h3>Naydelin Garc&iacute;a <br>&#127941;</h3>
+      </div>
+      <div class="card-back">
+        <img src="descarga.png" alt="">
+          <p class="from">San Fernando</p>
+          <p class="q">"Soy un ser de paz"</p>
+          <p class="q">(Es mentira)</p>
+          <p class="date">26 de septiembre de 2023</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+      <div class="card-front">
+          <span class="simbol">X</span>
+          <h3>Daniel L&oacute;pez <br>&#127941;</h3>
+      </div>
+      <div class="card-back">
+        <img src="descarga.png" alt="">
+          <p class="from">Apopa</p>
+          <p class="q">"Acabaré el semestre? o el semestre acabará conmigo?"</p>
+          <p class="date">26 de septiembre de 2023</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('active')">
+      <!-- <div class="card-front" style="background: url(5uxijmha.png); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"> -->
+        <div class="card-front">
+          <span class="simbol">X</span>
+          <h3>Edwin Albanez <br>&#127941;</h3>
+      </div>
+      <div class="card-back">
+        <img src="descarga.png" alt="">
+          <p class="from">San Salvador</p>
+          <p class="q">"Chispas"</p>
+          <p class="date">26 de septiembre de 2023</p>
+      </div>
+    </div>
+     <!-- ... -->
+
+   </div>
+
+   <!-- Opcionalmente, se puede agregar un script para activar o desactivar todas las tarjetas al mismo tiempo -->
+
+   <script>
+     let cards = document.querySelectorAll(".card");
+     document.addEventListener("keydown", function(event) {
+       if (event.key == "Enter") {
+         cards.forEach(card => card.classList.toggle("active"));
+       }
+     });
+   </script>
+
+</body>  
+</html>  
